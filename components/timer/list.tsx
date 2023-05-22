@@ -1,14 +1,17 @@
-"use client"; // This is a client component 👈🏽
+"use client"; 
 
 import React from "react";
 import { AppContext } from "@/components/timer/timercontext"
 import { Types } from "@/components/timer/reducers";
+import TimerCard from "./timercard";
 
 const List = () => {
   const [form, setForm] = React.useState({
     name: "",
     price: 0
   });
+
+  
   const { state ,dispatch } = React.useContext(AppContext);
 
   const handleForm = (type: string, value: string) => {
@@ -60,6 +63,8 @@ const List = () => {
         {state.products.map(c => (
           <div>
             {/* TODO: Add timer object here*/}
+
+            <TimerCard name={true} duration={c.price} />
             <span>{c.name}</span>
             <span>{c.price}</span>
             <button onClick={() => deleteProduct(c.id)}>delete</button>
