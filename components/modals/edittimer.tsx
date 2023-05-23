@@ -4,7 +4,7 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 
-export default function CreateTimerModal( { createProduct } : {createProduct : any}) {
+export default function EditTimerModal( { id, editProduct } : {id : number, editProduct : any}) {
   const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
 
@@ -12,7 +12,7 @@ export default function CreateTimerModal( { createProduct } : {createProduct : a
   const [timerDuration, setNewTimerDuration] = useState<number>(0);
 
   const addTimer = () => {
-    createProduct(timerName, timerDuration)
+    editProduct(id, timerName, timerDuration)
     setOpen(false);
   };
 
@@ -73,7 +73,7 @@ export default function CreateTimerModal( { createProduct } : {createProduct : a
                             as="h3"
                             className="text-base font-semibold leading-6 text-gray-900"
                           >
-                            Create a new timer
+                            Edit a timer
                           </Dialog.Title>
                           <div className="mt-2">
                             <p className="text-sm text-gray-500">
@@ -148,7 +148,7 @@ export default function CreateTimerModal( { createProduct } : {createProduct : a
               className="h-6 w-6 white-red-600 mr-3"
               aria-hidden="true"
             />
-            <span className="mr-3"> &nbsp; &nbsp; Create a new timer! </span>
+            <span className="mr-3"> &nbsp; &nbsp; Edit! </span>
           </button>
         </div>
       )}
