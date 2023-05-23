@@ -4,6 +4,7 @@ import React from "react";
 import { AppContext } from "@/components/timer/timercontext"
 import { Types } from "@/components/timer/reducers";
 import TimerCard from "./timercard";
+import CreateTimerModal from "../modals/createtimer";
 
 const List = () => {
   const [form, setForm] = React.useState({
@@ -28,6 +29,17 @@ const List = () => {
         id: Math.round(Math.random() * 10000),
         name: form.name,
         price: form.price
+      }
+    });
+  };
+
+  const createProductNew = (name : string, price : string) => {
+    dispatch({
+      type: Types.Create,
+      payload: {
+        id: Math.round(Math.random() * 10000),
+        name: name,
+        price: price
       }
     });
   };
@@ -83,6 +95,10 @@ const List = () => {
 
           </div>
         ))}
+      </div>
+
+      <div className="relative flex place-items-center ">
+        <CreateTimerModal createProduct={createProductNew} />
       </div>
     </div>
   );
