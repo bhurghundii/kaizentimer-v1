@@ -32,6 +32,17 @@ const List = () => {
     });
   };
 
+  const editProduct = (id: number) => {
+    dispatch({
+      type: Types.Edit,
+      payload: {
+        id: id,
+        name: form.name,
+        price: form.price
+      }
+    });
+  };
+
   const deleteProduct = (id: number) => {
     dispatch({
       type: Types.Delete,
@@ -66,8 +77,10 @@ const List = () => {
 
             <TimerCard name={true} duration={c.price} />
             <span>{c.name}</span>
-            <span>{c.price}</span>
+            {/* <span>{c.price}</span> */}
             <button onClick={() => deleteProduct(c.id)}>delete</button>
+            <button onClick={() => editProduct(c.id)}>Edit</button>
+
           </div>
         ))}
       </div>

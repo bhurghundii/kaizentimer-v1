@@ -1,18 +1,11 @@
-type ActionMap<M extends { [index: string]: any }> = {
-    [Key in keyof M]: M[Key] extends undefined
-      ? {
-          type: Key;
-        }
-      : {
-          type: Key;
-          payload: M[Key];
-        }
-  };
+import { ActionMap } from "@/types/ActionMap";
+
   
   export enum Types {
     Create = "CREATE_PRODUCT",
     Delete = "DELETE_PRODUCT",
-    Add = "ADD_PRODUCT"
+    Add = "ADD_PRODUCT",
+    Edit = "EDIT_PRODUCT"
   }
   
   // Product
@@ -25,6 +18,11 @@ type ActionMap<M extends { [index: string]: any }> = {
   
   type ProductPayload = {
     [Types.Create]: {
+      id: number;
+      name: string;
+      price: number;
+    };
+    [Types.Edit]: {
       id: number;
       name: string;
       price: number;
@@ -54,6 +52,12 @@ type ActionMap<M extends { [index: string]: any }> = {
         ];
       case Types.Delete:
         return [...state.filter(product => product.id !== action.payload.id)];
+      case Types.Edit:
+        return [...state.map(product => (product.id === action.payload.id) ? {
+          id: action.payload.id,
+          name: action.payload.name,
+          price: action.payload.price
+        } : product)];
       default:
         return state;
     }
