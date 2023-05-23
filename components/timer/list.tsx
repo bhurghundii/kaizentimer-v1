@@ -1,6 +1,6 @@
 "use client"; 
 
-import React from "react";
+import React, { useEffect } from "react";
 import { AppContext } from "@/components/timer/timercontext"
 import { Types } from "@/components/timer/reducers";
 import TimerCard from "./timercard";
@@ -13,7 +13,18 @@ const List = () => {
     price: 0
   });
 
-  
+  useEffect(() => {
+    // Perform localStorage action
+    const item = localStorage.getItem('storedTimers')
+    console.log(item)
+    if (item != null) { 
+      JSON.parse(item).map(timer => {
+        createProductNew(timer.name, parseInt(timer.price))
+      })
+    }
+    // loadProducts(JSON.parse(item));
+  }, [])
+
   const { state ,dispatch } = React.useContext(AppContext);
 
   const handleForm = (type: string, value: string) => {
@@ -21,6 +32,16 @@ const List = () => {
       ...form,
       [type]: value
     }));
+  };
+
+
+  const loadProducts = (products : any) => {
+    dispatch({
+      type: Types.Load,
+      payload: {
+        products : products
+      }
+    });
   };
 
   const createProduct = () => {
