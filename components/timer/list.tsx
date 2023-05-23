@@ -4,6 +4,8 @@ import React from "react";
 import { AppContext } from "@/components/timer/timercontext"
 import { Types } from "@/components/timer/reducers";
 import TimerCard from "./timercard";
+import CreateTimerModal from "../modals/createtimer";
+import EditTimerModal from "../modals/edittimer";
 
 const List = () => {
   const [form, setForm] = React.useState({
@@ -32,6 +34,17 @@ const List = () => {
     });
   };
 
+  const createProductNew = (name : string, price : number) => {
+    dispatch({
+      type: Types.Create,
+      payload: {
+        id: Math.round(Math.random() * 10000),
+        name: name,
+        price: price
+      }
+    });
+  };
+
   const editProduct = (id: number) => {
     dispatch({
       type: Types.Edit,
@@ -39,6 +52,17 @@ const List = () => {
         id: id,
         name: form.name,
         price: form.price
+      }
+    });
+  };
+
+  const editProductNew = (id: number, name : string, price : number) => {
+    dispatch({
+      type: Types.Edit,
+      payload: {
+        id: id,
+        name: name,
+        price: price
       }
     });
   };
@@ -75,14 +99,21 @@ const List = () => {
           <div>
             {/* TODO: Add timer object here*/}
 
-            <TimerCard name={true} duration={c.price} />
+            <div key={c.price}> 
+            <TimerCard name={c.name} duration={c.price} /> 
+            </div>
             <span>{c.name}</span>
             {/* <span>{c.price}</span> */}
             <button onClick={() => deleteProduct(c.id)}>delete</button>
-            <button onClick={() => editProduct(c.id)}>Edit</button>
+            {/* <button onClick={() => editProduct(c.id)}>Edit</button> */}
+            <EditTimerModal id={c.id} editProduct={editProductNew} />
 
           </div>
         ))}
+      </div>
+
+      <div className="relative flex place-items-center ">
+        <CreateTimerModal createProduct={createProductNew} />
       </div>
     </div>
   );
