@@ -4,7 +4,7 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 
-export default function CreateTimerModal( { createProduct } : {createProduct : any}) {
+export default function CreateTimerModal( { createTimer } : {createTimer : any}) {
   const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
 
@@ -12,7 +12,7 @@ export default function CreateTimerModal( { createProduct } : {createProduct : a
   const [timerDuration, setNewTimerDuration] = useState<number>(0);
 
   const addTimer = () => {
-    createProduct(timerName, timerDuration)
+    createTimer(timerName, timerDuration)
     setOpen(false);
   };
 

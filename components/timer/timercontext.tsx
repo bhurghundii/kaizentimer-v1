@@ -2,37 +2,29 @@
 
 import React, { createContext, useReducer, Dispatch } from "react";
 import {
-  productReducer,
-  ProductActions,
+  timerReducer,
+  TimerActions,
 } from "@/components/timer/reducers";
+import { InitialStateType } from "@/types/InitialStateType";
 
-type ProductType = {
-  id: number;
-  name: string;
-  price: number;
-};
-
-type InitialStateType = {
-  products: ProductType[];
-};
 
 const initialState = {
-  products: [],
+  timers: [],
 };
 
 const AppContext = createContext<{
   state: InitialStateType;
-  dispatch: Dispatch<ProductActions>;
+  dispatch: Dispatch<TimerActions>;
 }>({
   state: initialState,
   dispatch: () => null
 });
 
 const mainReducer = (
-  { products }: InitialStateType,
-  action: ProductActions
+  { timers }: InitialStateType,
+  action: TimerActions
 ) => ({
-  products: productReducer(products, action),
+  timers: timerReducer(timers, action),
 });
 
 const AppProvider: React.FC = ({ children }) => {
