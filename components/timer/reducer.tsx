@@ -13,7 +13,7 @@ export function reducer (
         {
           id: action.payload.id,
           name: action.payload.name,
-          price: action.payload.price,
+          time: action.payload.time,
         },
       ];
 
@@ -30,7 +30,7 @@ export function reducer (
             ? {
                 id: action.payload.id,
                 name: action.payload.name,
-                price: action.payload.price,
+                time: action.payload.time,
               }
             : timer
         ),

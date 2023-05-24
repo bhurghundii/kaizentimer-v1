@@ -14,31 +14,31 @@ function Listing () {
 
     if (item != null) {
       JSON.parse(item).map((timer) => {
-        createTimer(timer.name, parseInt(timer.price));
+        createTimer(timer.name, parseInt(timer.time));
       });
     }
   }, []);
 
   const { state, dispatch } = React.useContext(AppContext);
 
-  function createTimer(name: string, price: number) {
+  function createTimer(name: string, time: number) {
     dispatch({
       type: Types.Create,
       payload: {
         id: Math.round(Math.random() * 10000),
         name: name,
-        price: price,
+        time: time,
       },
     });
   }
 
-  function editTimer(id: number, name: string, price: number) {
+  function editTimer(id: number, name: string, time: number) {
     dispatch({
       type: Types.Edit,
       payload: {
         id: id,
         name: name,
-        price: price,
+        time: time,
       },
     });
   }
@@ -57,8 +57,8 @@ function Listing () {
       <div style={{ marginTop: 20 }}>
         {state.timers.map((c) => (
           <div>
-            <div key={c.price}>
-              <TimerCard name={c.name} duration={c.price} />
+            <div key={c.time}>
+              <TimerCard name={c.name} duration={c.time} />
             </div>
             <span>{c.name}</span>
             <button onClick={() => deleteTimer(c.id)}>delete</button>

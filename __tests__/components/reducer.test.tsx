@@ -16,7 +16,7 @@ describe('Reducer tests', () => {
       payload: {
           id: 111,
           name: 'hello',
-          price: 30,
+          time: 30,
       }
   }) 
   
@@ -27,7 +27,7 @@ describe('Reducer tests', () => {
   it('Edited timers are returned as a part of the array', () => {
 
     const initialState = {
-      timers: [{"id": 111, "name": "hello", "price": 30}],
+      timers: [{"id": 111, "name": "hello", "time": 30}],
     };
 
     const timers :  InitialStateType = initialState ;
@@ -37,20 +37,20 @@ describe('Reducer tests', () => {
       payload: {
           id: 111,
           name: 'test',
-          price: 56,
+          time: 56,
       }
   }) 
   
     expect(result).toHaveLength(1);
     expect(result[0].name).toBe("test");
-    expect(result[0].price).toBe(56);
+    expect(result[0].time).toBe(56);
 
   })
 
   it('Edited timers are returned as a part of the array', () => {
 
     const initialState = {
-      timers: [{"id": 111, "name": "hello", "price": 30}],
+      timers: [{"id": 111, "name": "hello", "time": 30}],
     };
 
     const timers :  InitialStateType = initialState ;
@@ -60,20 +60,20 @@ describe('Reducer tests', () => {
       payload: {
           id: 111,
           name: 'test',
-          price: 56,
+          time: 56,
       }
   }) 
   
     expect(result).toHaveLength(1);
     expect(result[0].name).toBe("test");
-    expect(result[0].price).toBe(56);
+    expect(result[0].time).toBe(56);
 
   })
 
   it('Deleted timers wipe things out', () => {
 
     const initialState = {
-      timers: [{"id": 111, "name": "hello", "price": 30}],
+      timers: [{"id": 111, "name": "hello", "time": 30}],
     };
 
     const timers :  InitialStateType = initialState ;

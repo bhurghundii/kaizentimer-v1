@@ -4,12 +4,12 @@ export type TimerPayload = {
     [Types.Create]: {
       id: number;
       name: string;
-      price: number;
+      time: number;
     };
     [Types.Edit]: {
       id: number;
       name: string;
-      price: number;
+      time: number;
     };
     [Types.Delete]: {
       id: number;
