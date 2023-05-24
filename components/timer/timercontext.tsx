@@ -3,9 +3,7 @@
 import React, { createContext, useReducer, Dispatch } from "react";
 import {
   productReducer,
-  shoppingCartReducer,
   ProductActions,
-  ShoppingCartActions
 } from "@/components/timer/reducers";
 
 type ProductType = {
@@ -16,28 +14,25 @@ type ProductType = {
 
 type InitialStateType = {
   products: ProductType[];
-  shoppingCart: number;
 };
 
 const initialState = {
   products: [],
-  shoppingCart: 0
 };
 
 const AppContext = createContext<{
   state: InitialStateType;
-  dispatch: Dispatch<ProductActions | ShoppingCartActions>;
+  dispatch: Dispatch<ProductActions>;
 }>({
   state: initialState,
   dispatch: () => null
 });
 
 const mainReducer = (
-  { products, shoppingCart }: InitialStateType,
-  action: ProductActions | ShoppingCartActions
+  { products }: InitialStateType,
+  action: ProductActions
 ) => ({
   products: productReducer(products, action),
-  shoppingCart: shoppingCartReducer(shoppingCart, action)
 });
 
 const AppProvider: React.FC = ({ children }) => {

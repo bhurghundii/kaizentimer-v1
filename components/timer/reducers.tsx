@@ -41,7 +41,7 @@ export type ProductActions =
 
 export const productReducer = (
   state: ProductType[],
-  action: ProductActions | ShoppingCartActions
+  action: ProductActions
 ) => {
   switch (action.type) {
     case Types.Create:
@@ -74,27 +74,6 @@ export const productReducer = (
             : product
         ),
       ];
-    default:
-      return state;
-  }
-};
-
-// ShoppingCart
-
-type ShoppingCartPayload = {
-  [Types.Add]: undefined;
-};
-
-export type ShoppingCartActions =
-  ActionMap<ShoppingCartPayload>[keyof ActionMap<ShoppingCartPayload>];
-
-export const shoppingCartReducer = (
-  state: number,
-  action: ProductActions | ShoppingCartActions
-) => {
-  switch (action.type) {
-    case Types.Add:
-      return state + 1;
     default:
       return state;
   }
