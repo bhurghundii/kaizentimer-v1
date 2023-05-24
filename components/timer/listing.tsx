@@ -11,7 +11,7 @@ function Listing () {
   useEffect(() => {
     // Perform localStorage action
     const item = localStorage.getItem("storedTimers");
-    console.log(item);
+
     if (item != null) {
       JSON.parse(item).map((timer) => {
         createTimer(timer.name, parseInt(timer.price));
