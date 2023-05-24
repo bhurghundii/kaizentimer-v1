@@ -1,30 +1,32 @@
 "use client";
 
-import { Fragment, useRef, useState } from "react";
+import { Fragment, SetStateAction, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
 
-export default function CreateTimerModal( { createTimer } : {createTimer : any}) {
+export default function CreateTimerModal({
+  createTimer,
+}: {
+  createTimer: any;
+}) {
   const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
 
   const [timerName, setNewTimerName] = useState<string>("My new timer");
   const [timerDuration, setNewTimerDuration] = useState<number>(0);
 
-  const addTimer = () => {
-    createTimer(timerName, timerDuration)
+  function addTimer() {
+    createTimer(timerName, timerDuration);
     setOpen(false);
-  };
+  }
 
-  const handleNameChange = (event: { target: { value: any } }) => {
-    const value = event.target.value;
-    setNewTimerName(value);
-  };
+  function handleNameChange(event: { target: { value: any } }) {
+    setNewTimerName( event.target.value);
+  }
 
-  const handleDurationChange = (event: { target: { value: any } }) => {
-    const value = event.target.value;
-    setNewTimerDuration(value);
-  };
+  function handleDurationChange(event: { target: { value: any } }) {
+    setNewTimerDuration(event.target.value);
+  }
 
   return (
     <div>

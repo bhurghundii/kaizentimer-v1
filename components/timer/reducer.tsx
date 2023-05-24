@@ -2,10 +2,10 @@ import { Types } from "@/enums/Types";
 import { TimerActions } from "@/types/TimerActions";
 import { TimerType } from "@/types/TimerType";
 
-export const timerReducer = (
+export function reducer (
   state: TimerType[],
   action: TimerActions
-) => {
+)  {
   switch (action.type) {
     case Types.Create:
       const newArray = [

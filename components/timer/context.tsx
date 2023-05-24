@@ -2,10 +2,10 @@
 
 import React, { createContext, useReducer, Dispatch } from "react";
 import {
-  timerReducer,
-  TimerActions,
-} from "@/components/timer/reducers";
+  reducer,
+} from "@/components/timer/reducer";
 import { InitialStateType } from "@/types/InitialStateType";
+import { TimerActions } from "@/types/TimerActions";
 
 
 const initialState = {
@@ -24,7 +24,7 @@ const mainReducer = (
   { timers }: InitialStateType,
   action: TimerActions
 ) => ({
-  timers: timerReducer(timers, action),
+  timers: reducer(timers, action),
 });
 
 const AppProvider: React.FC = ({ children }) => {

@@ -11,19 +11,17 @@ export default function EditTimerModal( { id, editTimer } : {id : number, editTi
   const [timerName, setNewTimerName] = useState<string>("My new timer");
   const [timerDuration, setNewTimerDuration] = useState<number>(0);
 
-  const addTimer = () => {
+  function editTimerById(id : number) {
     editTimer(id, timerName, timerDuration)
     setOpen(false);
   };
 
-  const handleNameChange = (event: { target: { value: any } }) => {
-    const value = event.target.value;
-    setNewTimerName(value);
+  function handleNameChange (event: { target: { value: any } }) {
+    setNewTimerName(event.target.value);
   };
 
-  const handleDurationChange = (event: { target: { value: any } }) => {
-    const value = event.target.value;
-    setNewTimerDuration(value);
+  function handleDurationChange (event: { target: { value: any } }) {
+    setNewTimerDuration(event.target.value);
   };
 
   return (
@@ -118,7 +116,7 @@ export default function EditTimerModal( { id, editTimer } : {id : number, editTi
                     <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                      onClick={addTimer}
+                      onClick={() => editTimerById(id)}
                     >
                       Create!
                     </button>

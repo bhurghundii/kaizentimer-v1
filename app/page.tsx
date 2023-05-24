@@ -1,8 +1,7 @@
 import CreateTimerModal from "@/components/modals/createtimer";
-import List from "@/components/timer/list";
+import Listing from "@/components/timer/listing";
 
-import { AppProvider } from "@/components/timer/timercontext";
-import Image from "next/image";
+import { AppProvider } from "@/components/timer/context";
 
 export default function Home() {
   return (
@@ -16,7 +15,7 @@ export default function Home() {
 
       <div className="relative flex place-items-center">
         <AppProvider>
-          <List />
+          <Listing />
         </AppProvider>
       </div>
 

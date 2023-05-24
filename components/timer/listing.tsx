@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { AppContext } from "@/components/timer/timercontext";
+import { AppContext } from "@/components/timer/context";
 import TimerCard from "./timercard";
 import CreateTimerModal from "../modals/createtimer";
 import EditTimerModal from "../modals/edittimer";
 import { Types } from "@/enums/Types";
 
-const List = () => {
+function Listing () {
   useEffect(() => {
     // Perform localStorage action
     const item = localStorage.getItem("storedTimers");
@@ -74,4 +74,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default Listing;
