@@ -15,6 +15,7 @@ export default function Home() {
       </div>
 
       <div className="relative flex place-items-center">
+        { /* @ts-ignore */}
         <AppProvider>
           <Listing />
         </AppProvider>

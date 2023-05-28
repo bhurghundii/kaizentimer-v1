@@ -27,7 +27,7 @@ const mainReducer = (
   timers: reducer(timers, action),
 });
 
-const AppProvider: React.FC = ({ children }) => {
+const AppProvider: React.FC = ({ children } : any) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);
 
   return (

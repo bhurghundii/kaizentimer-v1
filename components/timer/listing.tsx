@@ -8,17 +8,6 @@ import EditTimerModal from "../modals/edittimer";
 import { Types } from "@/enums/Types";
 
 function Listing() {
-  useEffect(() => {
-    // Perform localStorage action
-    const item = localStorage.getItem("storedTimers");
-
-    if (item != null) {
-      JSON.parse(item).map((timer) => {
-        createTimer(timer.name, parseInt(timer.price));
-      });
-    }
-  }, []);
-
   const { state, dispatch } = React.useContext(AppContext);
 
   function createTimer(name: string, price: number) {
@@ -52,12 +41,22 @@ function Listing() {
     });
   }
 
+  useEffect(() => {
+    // Perform localStorage action
+    const item = localStorage.getItem("storedTimers");
+
+    if (item != null) {
+      JSON.parse(item).map((timer : any) => {
+        createTimer(timer.name, parseInt(timer.price));
+      });
+    }
+  }, []);
+
   return (
     <div>
       <div style={{ marginTop: 20 }}>
         <div>
-        {state.timers.map((c) => (
-          <div>
+          {state.timers.map((c) => (
             <div className="py-4" key={c.price}>
               <TimerCard
                 name={c.name}
@@ -71,8 +70,7 @@ function Listing() {
                 }
               />
             </div>
-          </div>
-        ))}
+          ))}
         </div>
 
         <CreateTimerModal createTimer={createTimer} />
