@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {//avoiding CORS error, more here: https://vercel.com/support/articles/how-to-enable-cors
+
+    env: {
+      s3AlarmMp3Url: 'https://kaizentimer-assets.s3.amazonaws.com/alarm.mp3'
+    },
     async headers() {
         return [
           {

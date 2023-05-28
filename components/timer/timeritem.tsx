@@ -6,7 +6,7 @@ import useSound from 'use-sound';
 
 export default  function TimerItem (props: TimerCounterProps) {
   const [count, setCount] = useState(60 * props.duration);
-  const [play] = useSound('https://kaizentimer-assets.s3.amazonaws.com/alarm.mp3');
+  const [play] = useSound(process.env.s3AlarmMp3Url? process.env.s3AlarmMp3Url : '');
 
   useEffect(() => {
     if (props.timerSkipped) {

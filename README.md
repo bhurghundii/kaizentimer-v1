@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Why another CRUD Timer App?
+
+I needed an app which would let me set up multiple timers really easy. All the web options really sucked so I made my own. 
+No seriously: type "setting multiple timers web app" and find me a web app which can do what this can do that isn't some SaaS with a sign up etc.
+
+It's minimalist AF but the 2 big reasons I made it was to try out Next.JS and Tailwind and cause I just want to set timers across multiple devices.
+
 
 ## Getting Started
 
@@ -12,23 +18,11 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Learnings 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The new App Router stuff really isn't ready production use purely cause the docs for it aren't quite up to snuff yet (AWS has no mention of this stuff on their side)
+I really like Next.JS and TailWind though. I am going to 100% build more using it!
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## This is a prototype 
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I am really shocked at the lack options so I am going to rebuild this again using the Pages Router for Next.JS and approach it with AWS Amplify in mind right from the get go. I'd imagine a lot of the code is transferable

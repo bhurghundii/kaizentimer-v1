@@ -2,7 +2,6 @@ import { useState } from "react";
 import TimerItem from "./timeritem";
 import {
   ArrowRightCircleIcon,
-  Cog6ToothIcon,
   PauseIcon,
   PlayIcon,
 } from "@heroicons/react/24/outline";

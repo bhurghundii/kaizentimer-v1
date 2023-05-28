@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useEffect } from "react";
+import React, { useEffect } from "react";
 import { AppContext } from "@/components/timer/context";
 import TimerCard from "./timercard";
 import CreateTimerModal from "../modals/createtimer";
