@@ -23,7 +23,7 @@ export default  function TimerItem (props: TimerCounterProps) {
 
   return (
     <div>
-      <p>{new Date(count * 1000).toISOString().substring(12, 19)}</p>
+      <p className="text-3xl">{new Date(count * 1000).toISOString().substring(12, 19)}</p>
     </div>
   );
 };

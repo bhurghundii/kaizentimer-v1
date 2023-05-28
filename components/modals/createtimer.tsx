@@ -21,7 +21,7 @@ export default function CreateTimerModal({
   }
 
   function handleNameChange(event: { target: { value: any } }) {
-    setNewTimerName( event.target.value);
+    setNewTimerName(event.target.value);
   }
 
   function handleDurationChange(event: { target: { value: any } }) {
@@ -141,16 +141,16 @@ export default function CreateTimerModal({
       </Transition.Root>
 
       {!open && (
-        <div className="rounded-full bg-white h-8 flex items-center">
+        <div className="mx-20 my-5">
           <button
             onClick={() => setOpen(true)}
-            className="ml-auto bg-red-500 text-white px-4 py-2 rounded-lg flex items-center"
+            className=" bg-red-500 text-white px-4 py-2 rounded-lg flex shadow-lg"
           >
             <RocketLaunchIcon
               className="h-6 w-6 white-red-600 mr-3"
               aria-hidden="true"
             />
-            <span className="mr-3"> &nbsp; &nbsp; Create a new timer! </span>
+            <span className="mr-3 text-"> Create a new timer! </span>
           </button>
         </div>
       )}
