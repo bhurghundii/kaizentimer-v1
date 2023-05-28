@@ -9,6 +9,8 @@ export default  function TimerItem (props: TimerCounterProps) {
   const [play] = useSound('https://kaizentimer-assets.s3.amazonaws.com/alarm.mp3');
 
   useEffect(() => {
+    console.log(props.timerSkipped)
+    
     if (props.timerRunning) {
       if (count > 0) {
         //Implementing the setInterval method
