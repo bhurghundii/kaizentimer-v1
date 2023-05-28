@@ -1,5 +1,6 @@
 export default interface TimerCounterProps {
     timerRunning: boolean;
+    duration: number;
     timerSkipped: boolean;
-    duration: number
+    setTimerSkipped: any;
   }

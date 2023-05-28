@@ -22,7 +22,7 @@ export default function TimerCard({
   return (
     <div className="flex items-center inset-0 bg-blue-20 shadow-md rounded-lg h-20 white ">
       <div className="px-5">
-        <TimerItem timerRunning={timerRunning} duration={duration} timerSkipped={timerSkipped}/>
+        <TimerItem timerRunning={timerRunning} duration={duration} timerSkipped={timerSkipped} setTimerSkipped={setTimerSkipped}/>
         <h1 className="text-lg"> {name} </h1>
       </div>
 
@@ -45,7 +45,10 @@ export default function TimerCard({
       </div>
 
       <button
-            onClick={() => setTimerSkipped(true)}
+            onClick={() => {
+              setTimerRunning(false)
+              setTimerSkipped(true)}
+            }
             className="bg-white-500 hover:bg-blue-300 text-white font-bold py-2 px-4 rounded shadow-lg rounded-3xl"
           >
             <ArrowRightCircleIcon className="h-6 w-6 text-blue-600" aria-hidden="true" />
