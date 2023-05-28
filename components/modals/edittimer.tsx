@@ -2,27 +2,35 @@
 
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { RocketLaunchIcon } from "@heroicons/react/24/outline";
+import { Cog6ToothIcon, RocketLaunchIcon } from "@heroicons/react/24/outline";
 
-export default function EditTimerModal( { id, editTimer } : {id : number, editTimer : any}) {
+export default function EditTimerModal({
+  id,
+  editTimer,
+  deleteTimer
+}: {
+  id: number;
+  editTimer: any;
+  deleteTimer: any;
+}) {
   const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
 
   const [timerName, setNewTimerName] = useState<string>("My new timer");
   const [timerDuration, setNewTimerDuration] = useState<number>(0);
 
-  function editTimerById(id : number) {
-    editTimer(id, timerName, timerDuration)
+  function editTimerById(id: number) {
+    editTimer(id, timerName, timerDuration);
     setOpen(false);
-  };
+  }
 
-  function handleNameChange (event: { target: { value: any } }) {
+  function handleNameChange(event: { target: { value: any } }) {
     setNewTimerName(event.target.value);
-  };
+  }
 
-  function handleDurationChange (event: { target: { value: any } }) {
+  function handleDurationChange(event: { target: { value: any } }) {
     setNewTimerDuration(event.target.value);
-  };
+  }
 
   return (
     <div>
@@ -113,7 +121,7 @@ export default function EditTimerModal( { id, editTimer } : {id : number, editTi
                     </div>
                   </div>
                   <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                  <button
+                    <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                       onClick={() => editTimerById(id)}
@@ -134,12 +142,11 @@ export default function EditTimerModal( { id, editTimer } : {id : number, editTi
 
                     <button
                       type="button"
-                      className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-inset ring-red-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                      onClick={() => editTimerById(id)}
+                      className="mt-3 mr-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-red-900 shadow-sm ring-1 ring-inset ring-red-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                      onClick={() => deleteTimer(id)}
                     >
-                     Delete ⚠️
+                      Delete ⚠️
                     </button>
-
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -149,16 +156,15 @@ export default function EditTimerModal( { id, editTimer } : {id : number, editTi
       </Transition.Root>
 
       {!open && (
-        <div className="rounded-full bg-white h-8 flex items-center">
+        <div>
           <button
             onClick={() => setOpen(true)}
-            className="ml-auto bg-red-500 text-white px-4 py-2 rounded-lg flex items-center"
+            className="bg-white-500 hover:bg-blue-300 text-white font-bold py-2 px-4 rounded shadow-lg rounded-3xl"
           >
-            <RocketLaunchIcon
-              className="h-6 w-6 white-red-600 mr-3"
+            <Cog6ToothIcon
+              className="h-6 w-6 text-blue-600"
               aria-hidden="true"
             />
-            <span className="mr-3"> &nbsp; &nbsp; Edit! </span>
           </button>
         </div>
       )}

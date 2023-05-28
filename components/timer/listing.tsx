@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { AppContext } from "@/components/timer/context";
 import TimerCard from "./timercard";
 import CreateTimerModal from "../modals/createtimer";
 import EditTimerModal from "../modals/edittimer";
 import { Types } from "@/enums/Types";
 
-function Listing () {
+function Listing() {
   useEffect(() => {
     // Perform localStorage action
     const item = localStorage.getItem("storedTimers");
@@ -55,23 +55,30 @@ function Listing () {
   return (
     <div>
       <div style={{ marginTop: 20 }}>
+        <div>
         {state.timers.map((c) => (
           <div>
-            <div key={c.price}>
-              <TimerCard name={c.name} duration={c.price} />
+            <div className="py-4" key={c.price}>
+              <TimerCard
+                name={c.name}
+                duration={c.price}
+                EditModalComponent={
+                  <EditTimerModal
+                    id={c.id}
+                    editTimer={editTimer}
+                    deleteTimer={deleteTimer}
+                  />
+                }
+              />
             </div>
-            <span>{c.name}</span>
-            <button onClick={() => deleteTimer(c.id)}>delete</button>
-            <EditTimerModal id={c.id} editTimer={editTimer} />
           </div>
         ))}
-      </div>
+        </div>
 
-      <div className="relative flex place-items-center ">
         <CreateTimerModal createTimer={createTimer} />
       </div>
     </div>
   );
-};
+}
 
 export default Listing;
