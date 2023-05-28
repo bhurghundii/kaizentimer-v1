@@ -25,4 +25,4 @@ I really like Next.JS and TailWind though. I am going to 100% build more using i
 
 ## This is a prototype 
 
-I am really shocked at the lack options so I am going to rebuild this again using the Pages Router for Next.JS and approach it with AWS Amplify in mind right from the get go. I'd imagine a lot of the code is transferable
+I am really shocked at the lack options so I am going to rebuild this again using the Pages Router for Next.JS and approach it with AWS Amplify in mind right from the get go. I'd imagine a lot of the code is transferable so let's see
