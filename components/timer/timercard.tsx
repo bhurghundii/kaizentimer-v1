@@ -11,7 +11,7 @@ export default function TimerCard({
   const [timerRunning, setTimerRunning] = useState(false);
 
   return (
-    <div className="flex items-center ">
+    <div className="flex items-center inset-0 bg-blue-100 shadow-md rounded-lg ">
         <h1> {name} </h1>
         <TimerItem timerRunning={timerRunning} duration={duration} />
 
