@@ -5,6 +5,6 @@ describe('Home', () => {
   it('Load the index page and check the logo turns up', () => {
     render(<Home />)
 
-    expect(screen.getByText("Kaizen Timer: Live intentionally")).toBeInTheDocument
+    expect(screen.getByText("Kaizentimer ⏰")).toBeInTheDocument
   })
 })
