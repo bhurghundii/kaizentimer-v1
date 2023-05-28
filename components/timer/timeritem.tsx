@@ -2,10 +2,11 @@
 
 import TimerCounterProps from "@/interfaces/timercounterprops";
 import React, { useState, useEffect } from "react";
-
+import useSound from 'use-sound';
 
 export default  function TimerItem (props: TimerCounterProps) {
   const [count, setCount] = useState(60 * props.duration);
+  const [play] = useSound('https://kaizentimer-assets.s3.amazonaws.com/alarm.mp3');
 
   useEffect(() => {
     if (props.timerRunning) {
@@ -17,6 +18,9 @@ export default  function TimerItem (props: TimerCounterProps) {
 
         //Clearing the interval
         return () => clearInterval(interval);
+      } 
+      if (count <= 0){
+        play()
       }
     }
   }, [count, props.timerRunning]);
